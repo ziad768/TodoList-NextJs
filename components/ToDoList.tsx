@@ -20,7 +20,10 @@ import Header from "./table/Header";
 import Footer from "./table/Footer";
 export async function ToDoList() {
   const { userId } = await auth();
-  const ToDos = await GetToDo(userId as string);
+  let ToDos: ITodo[] = [];
+  if (userId) {
+    ToDos = await GetToDo(userId as string);
+  }
 
   return (
     <>
